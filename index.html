@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优秀3D打印模型</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 24px;
+            padding: 20px;
+        }
+        .icon-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 100px);
+            grid-auto-rows: 100px;
+            gap: 5px;
+            padding: 20px;
+            grid-row-start: 5;
+            /* 可以添加确保生效的样式，例如为父元素添加 grid 布局 */
+            position: relative;
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+        }
+        .icon {
+            background-color: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .icon.small {
+            width: 100px;
+            height: 100px;
+        }
+        .icon.large {
+            width: 200px;
+            height: 200px;
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .icon:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">3D模型分享站</div>
+    <input type="text" id="search-input" placeholder="搜索模型" style="grid-column: 1 / -1; text-align: center; padding: 10px; margin: 0 auto; border-radius: 10px; display: block;">
+    <div class="icon-container">
+        <div class="icon" data-model-id="00001">模型00001</div>
+    </div>
+    <script>
+        const icons = document.querySelectorAll('.icon');
+        const iconContainer = document.querySelector('.icon-container');
+        const searchInput = document.getElementById('search-input');
+        const models = [
+            { id: '00001', name: '模型00001' }
+        ];
+        let currentPage = 0;
+        const itemsPerPage = 10;
+        // 修改 populatePage 函数，确保在用户翻页时才加载新页面的内容
+        function populatePage() {
+            const startIndex = currentPage * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            iconContainer.innerHTML = '';
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredModels = models.filter(model => model.name.toLowerCase().includes(searchTerm));
+            const pageHeight = window.innerHeight;
+            const iconHeight = 100; // 假设卡片高度为 100px
+            const iconsPerColumn = Math.ceil(pageHeight / iconHeight);
+            const iconsPerRow = Math.ceil(window.innerWidth / 100);
+            const totalIconsNeeded = iconsPerColumn * iconsPerRow;
+            for (let i = 0; i < totalIconsNeeded; i++) {
+                const modelIndex = (startIndex + i) % filteredModels.length;
+                const model = filteredModels[modelIndex];
+                const icon = document.createElement('div');
+                icon.classList.add('icon');
+                const randomSize = Math.random() < 0.7 ? 'small' : 'large';
+                icon.classList.add(randomSize);
+                icon.dataset.modelId = model.id;
+                icon.textContent = model.name;
+                icon.addEventListener('click', () => {
+                    const modelId = icon.dataset.modelId;
+                    window.location.href = `./${modelId}/`;
+                });
+                iconContainer.appendChild(icon);
+            }
+        }
+        populatePage();
+        // 修改滚动事件监听逻辑
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                currentPage++;
+                populatePage();
+            }
+        });
+        searchInput.addEventListener('input', () => {
+            currentPage = 0;
+            populatePage();
+        });
+    </script>
+</body>
+
+</html>

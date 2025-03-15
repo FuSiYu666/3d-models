@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型详情</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+       .container {
+            display: flex;
+            width: 80%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+       .left {
+            flex: 1;
+            padding: 20px;
+        }
+       .left img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px; 
+        }
+       .container {
+            display: flex;
+            width: 80%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; 
+        }
+       .right {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+       .right-top {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+       .right-bottom {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+       .info {
+            margin-bottom: 20px;
+            font-size: 20px; /* 增大字体大小 */
+        }
+       .button-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 5px;
+        }
+       .button-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 35px;
+            width: auto;
+        }
+        @media (max-width: 768px) {
+           .button-container button {
+                width: 80%; /* 小屏幕宽度 */
+                font-size: 14px; /* 小屏幕字体大小 */
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+           .button-container button {
+                width: 60%; /* 中等屏幕宽度 */
+                font-size: 15px; /* 中等屏幕字体大小 */
+            }
+        }
+        @media (min-width: 1025px) {
+           .button-container button {
+                width: auto; /* 大屏幕宽度 */
+                font-size: 16px; /* 大屏幕字体大小 */
+            }
+        }
+       .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        download-button {
+            background-color: #007bff;
+            width: 5px;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="00001.png" alt="模型展示">
+        </div>
+        <div class="right">
+            <div class="right-top">
+                <div class="info" style="margin-bottom: 0px;">
+                    <p><span style="font-weight: bold;">模型名称:</span>123</p>
+                    <p><span style="font-weight: bold;">作者:</span>FSY</p>
+                    <p><span style="font-weight: bold;">类型:</span>原创</p>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <div class="button-container">
+                    <p>.stl文件下载</p>
+                    <a href="00001.stl"><button>下载链接1</button></a>
+                    <a href="00001.stl"><button>下载链接2</button></a>
+                    <a href="00001.stl"><button>下载链接3</button></a>
+                </div>
+                <div class="button-container" style="margin-top: 5px;">
+                    <p>.3mf文件下载</p>
+                    <a href="00001.stl"><button>下载链接1</button></a>
+                    <a href="00001.stl"><button>下载链接2</button></a>
+                    <a href="00001.stl"><button>下载链接3</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
