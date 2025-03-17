@@ -60,15 +60,17 @@
 <body>
     <div class="title">3D模型分享站</div>
     <input type="text" id="search-input" placeholder="搜索模型" style="grid-column: 1 / -1; text-align: center; padding: 10px; margin: 0 auto; border-radius: 10px; display: block;">
+    
     <div class="icon-container">
-        <div class="icon" data-model-id="00001">佛教标志卐</div>
+        
     </div>
     <script>
         const icons = document.querySelectorAll('.icon');
         const iconContainer = document.querySelector('.icon-container');
         const searchInput = document.getElementById('search-input');
         const models = [
-            { id: '00001', name: '佛教标志卐' }
+            { id: '00001', name: '佛教标志卐' }, 
+            { id: '00002', name: '佛教标志卐 - 挂件' }
         ];
         let currentPage = 0;
         const itemsPerPage = 10;
